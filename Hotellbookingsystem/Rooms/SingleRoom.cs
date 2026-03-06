@@ -4,7 +4,7 @@ namespace Hotellbookingsystem.Rooms;
 //</summary>
 public class SingleRoom: Room
 {
-    public override string DipsplayRoomInfo();
+    public override void DipsplayRoomInfo();
     {
         
     }

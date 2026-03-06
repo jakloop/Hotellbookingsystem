@@ -5,7 +5,7 @@ namespace Hotellbookingsystem.Rooms;
 public class Suite : Room
 {
     // hasdesk (bool), max guests (1), standard price per night = 800
-    public override string DipsplayRoomInfo();
+    public override void DipsplayRoomInfo();
     {
         
     }

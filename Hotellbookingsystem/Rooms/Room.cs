@@ -10,5 +10,5 @@ public abstract class Room
     private bool isAvailable;
     private int maxGuests;
 
-    public abstract string DipsplayRoomInfo();
+    public abstract void DipsplayRoomInfo();
 }
