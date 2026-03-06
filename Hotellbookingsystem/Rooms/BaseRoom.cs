@@ -9,4 +9,6 @@ public abstract class Room
     private decimal pricePerNight;
     private bool isAvailable;
     private int maxGuests;
+
+    public abstract string DipsplayRoomInfo();
 }
