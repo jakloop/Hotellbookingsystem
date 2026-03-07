@@ -17,7 +17,7 @@ public class VipGuest : Guest
     {
     }
     
-    public override decimal GetDiscount()
+    public override decimal GetDiscount(decimal bacePrice)
     {
         //TODO Implement loyalty points
         return 0m;

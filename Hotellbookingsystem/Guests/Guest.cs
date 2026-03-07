@@ -41,5 +41,5 @@ public abstract class Guest
     }
     public string GuestId => guestId;
     
-    public abstract decimal GetDiscount();
+    public abstract decimal GetDiscount(decimal bacePrice);
 }

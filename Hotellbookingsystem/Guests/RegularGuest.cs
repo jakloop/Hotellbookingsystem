@@ -8,7 +8,7 @@ public class RegularGuest : Guest
     public RegularGuest(string name, string email) : base(name, email)
     {
     }
-    public override decimal GetDiscount()
+    public override decimal GetDiscount(decimal bacePrice)
     {
         //TODO Implement discount, even if the discount is zero
         return 0;
