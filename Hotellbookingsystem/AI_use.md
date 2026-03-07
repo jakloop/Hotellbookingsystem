@@ -12,5 +12,5 @@ Much of the code in this project is based on the code from that project. This dr
 general. I was able to solve problems much faster, and do i through the exeperience of the previous project.
 
 ## AI statement
-In THIS project i have used AI (chatgpt) in the following tasks.
+In THIS project I have used AI (chatgpt) in the following tasks.
 -

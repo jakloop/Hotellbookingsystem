@@ -1,4 +1,5 @@
 using Hotellbookingsystem.Bookings;
+using Hotellbookingsystem.Utils;
 
 namespace Hotellbookingsystem.Guests;
 //<summary>
@@ -13,7 +14,7 @@ public abstract class Guest
 
     public Guest(string name, string email)
     {
-        guestId = Guid.NewGuid().ToString(); //TODO fix generator here
+        guestId = GuestIdGenerator.GenerateGuestId(); //TODO fix generator here
         Name = name;
         Email = email;
         ActiveBookings = new List<Booking>();
@@ -40,6 +41,8 @@ public abstract class Guest
         }
     }
     public string GuestId => guestId;
-    
+
+    public List<Booking> ActiveBookings1 => ActiveBookings;
+
     public abstract decimal GetDiscount(decimal bacePrice);
 }
