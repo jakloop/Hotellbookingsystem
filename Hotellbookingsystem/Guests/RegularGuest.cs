@@ -11,7 +11,7 @@ public class RegularGuest : Guest
     public override decimal GetDiscount(decimal bacePrice)
     {
         //TODO Implement discount, even if the discount is zero
-        return 0;
+        return bacePrice;
     }
     
 }
