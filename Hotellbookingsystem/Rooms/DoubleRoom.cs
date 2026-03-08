@@ -4,8 +4,8 @@ namespace Hotellbookingsystem.Rooms;
 //</summary>
 public class DoubleRoom : Room
 {
-    public DoubleRoom(string roomNumber, string roomType, decimal pricePerNight, bool isAvailable, int maxGuests) :
-        base(roomNumber, roomType, pricePerNight, isAvailable, maxGuests)
+    public DoubleRoom(string roomType, decimal pricePerNight, bool isAvailable, int maxGuests) :
+        base("Double", 1200, isAvailable, 2)
     {
         MaxGuests = 2;
         PricePerNight = 1200;
@@ -13,8 +13,8 @@ public class DoubleRoom : Room
         
     }
     //TODO implement display room info()
-    public override void DipsplayRoomInfo()
+    public override void DisplayRoomInfo()
     {
-        return;
+        throw new NotImplementedException();
     }
 }

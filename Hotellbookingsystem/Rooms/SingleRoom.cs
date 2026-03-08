@@ -5,19 +5,16 @@ namespace Hotellbookingsystem.Rooms;
 public class SingleRoom: Room
 {
     private bool hasDesk;
-    public SingleRoom(string RoomNumber, string RoomType, decimal PricePerNight, bool IsAvailable, int MaxGuests) :
-        base(RoomNumber, RoomType, PricePerNight, IsAvailable, MaxGuests)
+    public SingleRoom(string RoomType, decimal PricePerNight, bool IsAvailable, int MaxGuests) :
+        base("Single", 800, IsAvailable, 1)
     {
-        MaxGuests = 1;
-        PricePerNight = 800;
-        RoomType = "Single";
     }
     
     
     //TODO implement display room info()
-    public override void DipsplayRoomInfo()
+    public override void DisplayRoomInfo()
     {
-        return;
+        throw new NotImplementedException();
     }
 
 }

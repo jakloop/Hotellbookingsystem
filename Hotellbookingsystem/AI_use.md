@@ -13,4 +13,21 @@ general. I was able to solve problems much faster, and do i through the exeperie
 
 ## AI statement
 In THIS project I have used AI (chatgpt) in the following tasks.
--
+- Help with Email check
+
+This was assisted through the use of the AI in IDE (Rider).
+Code before:
+if (GuestRegister.Contains(guest.Email))
+throw new ArgumentException("Guest already registered");
+GuestRegister.Add(guest);
+
+Code after AI guidance:
+
+    public void RegisterGuest(Guest guest)
+    {
+        if (GuestRegister.Any(g => g.Email == guest.Email))
+        {
+            throw new ArgumentException("Guest already registered");
+        }
+        GuestRegister.Add(guest);
+    }

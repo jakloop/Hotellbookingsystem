@@ -12,7 +12,7 @@ public abstract class Room
     public bool isAvailable;
     private int maxGuests;
 
-    protected Room(string roomNumber, string roomType, decimal pricePerNight, bool isAvailable, int maxGuests)
+    protected Room(string roomType, decimal pricePerNight, bool isAvailable, int maxGuests)
     {
         RoomNumber = BookingIdGenerator.GenerateBookingId(); //TODO fix generator here
         RoomType = roomType;
@@ -23,6 +23,7 @@ public abstract class Room
     }
     public string RoomNumber { get; }
     public string RoomType { get; set; }
+
     public decimal PricePerNight
     {
         get => pricePerNight;
@@ -32,7 +33,9 @@ public abstract class Room
                 throw new ArgumentException("Price cannot be negative");
             pricePerNight = value;
         }
-    private bool IsAvailable { get; set; }
+    }
+
+    public bool IsAvailable { get; set; }
     public int MaxGuests 
         { 
             get;
@@ -40,5 +43,5 @@ public abstract class Room
             protected set;
         
         }
-    public abstract void DipsplayRoomInfo();
+    public abstract void DisplayRoomInfo();
 }

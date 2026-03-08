@@ -8,8 +8,12 @@ public class Suite : Room
     private bool hasJacuzzi;
     private int maxGuests;
     private decimal standardPricePerNight;
-    public override void DipsplayRoomInfo()
+    public Suite(string roomType, decimal pricePerNight, bool isAvailable) :
+        base("Suite", 3500, isAvailable, 5)
     {
-        return;
+    }
+    public override void DisplayRoomInfo()
+    {
+        throw new NotImplementedException();
     }
 }
