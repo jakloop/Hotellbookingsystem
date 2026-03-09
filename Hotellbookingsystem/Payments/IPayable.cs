@@ -8,4 +8,9 @@ public interface IPayable
         Console.WriteLine($"Amount: {amount}");
         return true;
     }
+
+    private string GetPaymentInfo()
+    {
+        throw new NotImplementedException();
+    }
 }

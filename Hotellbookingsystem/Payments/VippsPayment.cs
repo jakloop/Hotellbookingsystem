@@ -1,6 +1,6 @@
 namespace Hotellbookingsystem.Payments;
 
-public class VippsPayment
+public class VippsPayment : IPayable
 {
     
 }
