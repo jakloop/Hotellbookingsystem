@@ -20,6 +20,9 @@ The system simulates a hotel booking system with
 # Self assessment:
 
 
+# Sources (not cited, but used as a learning resource)
+- https://www.w3schools.com/cs/cs_interface.php
+- 
 
 
 
