@@ -1,6 +1,8 @@
 namespace Hotellbookingsystem.Utils;
-
-public class RoomGenerator
+//<summary>
+// Generates room numbers, incremanting by 1
+//</summary>
+public class RoomIdGenerator
 {
     private static int roomCounter = 0;
 

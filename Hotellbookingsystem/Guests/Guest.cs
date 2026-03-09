@@ -14,7 +14,7 @@ public abstract class Guest
 
     public Guest(string name, string email)
     {
-        guestId = GuestIdGenerator.GenerateGuestId(); //TODO fix generator here
+        guestId = GuestIdGenerator.GenerateGuestId();
         Name = name;
         Email = email;
         ActiveBookings = new List<Booking>();

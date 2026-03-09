@@ -1,7 +1,7 @@
 namespace Hotellbookingsystem.Utils;
 
 //<summary>
-// Generates booking ids
+// Generates booking ids, ingcrementing by 1
 //</summary>
 public class BookingIdGenerator
 {
@@ -9,6 +9,6 @@ public class BookingIdGenerator
     public static string GenerateBookingId()
     {
         bookingCounter++;
-        return $"B{bookingCounter:D3}";
+        return $"BK{bookingCounter:D3}";
     }
 }

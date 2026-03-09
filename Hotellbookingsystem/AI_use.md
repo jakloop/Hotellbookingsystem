@@ -6,13 +6,13 @@ This is because i believe that there is much valuable learning in solving proble
 In spite of this, i also see the value of AI in some situations. Especially when I want to discuss different solutions
 to a problem, or when I don't grasp the problem completely.
 
-This project is similar to a previous project, where I built a library system. In that project i used AI
-as a help for finding solutions to problems in my code, discussions, making templates i could be inspired by.
+This project is similar to a previous project, where I built a library system. In that project I used AI
+as a help for finding solutions to problems in my code, discussions, making templates I could be inspired by.
 Much of the code in this project is based on the code from that project. This drastically reduced the need for help in 
-general. I was able to solve problems much faster, and do i through the exeperience of the previous project.
+general. I was able to solve problems much faster, and do I through the exeperience of the previous project.
 
 ## AI statement
-In THIS project I have used AI (chatgpt) in the following tasks.
+In THIS project I have used AI (chatgpt or riderAIChat) in the following tasks.
 - Help with Email check
 
 This was assisted through the use of the AI in IDE (Rider).
@@ -31,3 +31,6 @@ Code after AI guidance:
         }
         GuestRegister.Add(guest);
     }
+
+
+

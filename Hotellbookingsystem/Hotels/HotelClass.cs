@@ -43,4 +43,14 @@ public class HotelClass
     {
         BookingHistory.Add(booking);
     }
+    
+    public string ShowAvailableRooms()
+    {
+        foreach(var room in RoomRegister)
+            if (room.IsAvailable)
+                Console.WriteLine($" Available: {room.RoomNumber}, {room.RoomType}, {room.PricePerNight}");
+            else
+                return "No available rooms";
+        return "Returning to menu...";
+    }
 }
