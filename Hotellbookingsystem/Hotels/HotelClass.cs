@@ -28,7 +28,19 @@ public class HotelClass
         {
             throw new ArgumentException("Guest already registered");
         }
-
         GuestRegister.Add(guest);
+    }
+    public void RegisterRoom(Room room)
+    {
+        if (RoomRegister.Any(r => r.RoomNumber == room.RoomNumber))
+        {
+            throw new ArgumentException("Room already registered");
+        }
+        RoomRegister.Add(room);
+    }
+    
+    public void RegisterBooking(Booking booking)
+    {
+        BookingHistory.Add(booking);
     }
 }

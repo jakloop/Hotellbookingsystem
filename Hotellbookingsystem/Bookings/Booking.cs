@@ -6,14 +6,14 @@ namespace Hotellbookingsystem.Bookings;
 // booking class
 // handles checking in and out, and verifies payment
 //</summary>
-public class Booking : Guest
+public class Booking
 {
     private string BookingId;
     private string UserId;
     private DateTime CheckInDate;
     private DateTime CheckOutDate;
     IPayable PaymentMethod;
-    public Booking(string name, string email) : base(name, email)
+    public Booking(string name, string email) : base(string name, string email)
     {
         
     }
