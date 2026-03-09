@@ -15,5 +15,6 @@ public class Booking : Guest
     IPayable PaymentMethod;
     public Booking(string name, string email) : base(name, email)
     {
+        
     }
 }

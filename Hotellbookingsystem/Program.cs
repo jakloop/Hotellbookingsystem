@@ -2,6 +2,10 @@
 using Hotellbookingsystem.Guests;
 using Hotellbookingsystem.Utils;
 using Hotellbookingsystem.Rooms;
+using System;
+using Hotellbookingsystem.Bookings;
+using Hotellbookingsystem.Payments;
+using Hotellbookingsystem.MenuHandlers;
 namespace Hotellbookingsystem;
 
 class Program
@@ -27,5 +31,8 @@ class Program
         Console.WriteLine(room1.RoomNumber + " " + room1.RoomType + " " + room1.PricePerNight);
         Console.WriteLine(room2.RoomNumber + " " + room2.RoomType + " " + room2.PricePerNight);
         
+        Console.WriteLine("Starting program...");
+        MenuHandler menuHandler = new MenuHandler(hotel);
+        menuHandler.Menu();
     }
 }
