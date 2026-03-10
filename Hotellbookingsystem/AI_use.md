@@ -33,4 +33,29 @@ Code after AI guidance:
     }
 
 
+- fixing Ipayment in createbooking() (RIDERAICHAT)
+- I'm struggling to get the IPayment to work in the CreatBooking class, can you see whats wrong?
+  
+- Short answer:
+  The main thing wrong with IPayable in CreateBooking is:
+  IPayable is not public
+  you pass IPayment as a parameter but use payment inside the method
+  guest/room lookup can return null
+  If you want, I can give you a fully corrected version of IPayable, CardPayment, VippsPayment, and CreateBooking together so they all line up cleanly.
 
+
+- Credit card length validator
+//
+public class Validator
+{
+public static bool IsExactlyFourDigitsInput(string input)
+{
+// Trim whitespace first to handle inputs like " 1234 "
+string trimmedInput = input.Trim();
+
+        // Check if it's all digits and exactly 4 characters long
+        bool isFourDigits = trimmedInput.All(char.IsDigit) && trimmedInput.Length == 4;
+        
+        return isFourDigits;
+    }
+}

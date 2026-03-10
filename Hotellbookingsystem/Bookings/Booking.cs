@@ -39,13 +39,12 @@ public class Booking
     
     new void CheckIn()
     {
-        
     }
-    
+
     new void CheckOut()
     {
-        
     }
-    
-    
+
+
+
 }

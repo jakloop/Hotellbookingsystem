@@ -2,10 +2,7 @@ namespace Hotellbookingsystem.Payments;
 
 public interface IPayable
 {
-    private bool ProcessPayment(decimal amount)
-    {
-        return true;
-    }
+    public bool ProcessPayment(decimal amount);
 
     public string GetPaymentInfo(decimal amount);
 }

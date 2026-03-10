@@ -3,13 +3,14 @@
 using System.Linq;
 using Hotellbookingsystem.Bookings;
 using Hotellbookingsystem.Guests;
+using Hotellbookingsystem.Payments;
 using Hotellbookingsystem.Rooms;
 
 namespace Hotellbookingsystem.Hotels;
 
 public class HotelClass
 {
-    private string name;
+    private string hotelName;
     private List<Room> RoomRegister { get; set; }
     private List<Guest> GuestRegister { get; set; }
     private List<Booking> BookingHistory { get; set; }
@@ -52,5 +53,49 @@ public class HotelClass
             else
                 return "No available rooms";
         return "Returning to menu...";
+    }
+    
+    public void CreateBooking(string guestId, string roomNumber, DateTime checkInDate, DateTime checkOutDate, IPayable iPayable)
+    {
+        Guest? guest = null;
+        Room? room = null;
+        
+        // Finds userid in the user register
+        
+        foreach (var g in GuestRegister)
+            if (g.GuestId == guestId)
+            {
+                guest = g;
+                break;
+            }
+        
+        // if there is no match
+        
+        if (guest == null)
+            throw new ArgumentException("Guest not found");
+        
+        // Finds roomid in the room register
+        foreach (var r in RoomRegister)
+            if (r.RoomNumber == roomNumber)
+            {
+                room = r;
+                break;
+            }
+
+        if (room == null)
+            throw new ArgumentException("Room not found");
+        
+        // Checks if it is available
+        if (!room.IsAvailable)
+            throw new ArgumentException("Room is not available");
+        
+        // Update room availability
+        room.IsAvailable = false;
+        
+        // Create booking
+        Booking booking = new Booking(guest, room, checkInDate, checkOutDate, );
+        RegisterBooking(booking);
+        
+        
     }
 }
