@@ -1,5 +1,4 @@
 using Hotellbookingsystem.Utils;
-using System;
 
 
 namespace Hotellbookingsystem.Rooms;
@@ -8,12 +7,7 @@ namespace Hotellbookingsystem.Rooms;
 //</summary>
 public abstract class Room
 {
-    private string roomNumber;
-    private string roomType;
-    private decimal pricePerNight;
-    public bool isAvailable;
-    private int maxGuests;
-
+    
     protected Room(string roomType, decimal pricePerNight, bool isAvailable, int maxGuests)
     {
         RoomNumber = RoomIdGenerator.GenerateRoomNumber(); //TODO fix generator here
@@ -23,6 +17,8 @@ public abstract class Room
         IsAvailable = isAvailable;
         MaxGuests = maxGuests;
     }
+    
+    private decimal pricePerNight;
     public string RoomNumber { get; }
     public string RoomType { get; protected set; }
 

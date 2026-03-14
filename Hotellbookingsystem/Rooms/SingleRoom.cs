@@ -2,19 +2,21 @@ namespace Hotellbookingsystem.Rooms;
 //<summary>
 // Single room class
 //</summary>
-public class SingleRoom: Room
+public class SingleRoom : Room
 {
-    private bool hasDesk;
-    public SingleRoom(string RoomType, decimal PricePerNight, bool IsAvailable, int MaxGuests) :
-        base("Single", 800, IsAvailable, 1)
+
+
+    public SingleRoom(string roomType, decimal pricePerNight, bool isAvailable, int maxGuests, bool hasDesk) :
+        base("Single", 800, isAvailable, 1)
     {
+        HasDesk = hasDesk;
     }
-    
-    
-    //TODO implement display room info()
+    public bool HasDesk { get; }
+
     public override void DisplayRoomInfo()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        Console.WriteLine(
+            $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasDesk ? "Yes" : "No")}");
     }
-
 }
