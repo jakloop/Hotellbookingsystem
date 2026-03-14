@@ -24,6 +24,7 @@ The system simulates a hotel booking system with
 # Sources (not cited, but used as a learning resource)
 - https://www.w3schools.com/cs/cs_interface.php
 - https://www.youtube.com/watch?v=6XrL5jXmTwM
+- https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers
 
 
 
