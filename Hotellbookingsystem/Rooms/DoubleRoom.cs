@@ -11,9 +11,8 @@ public class DoubleRoom : Room
         HasExtraBed = hasExtraBed;
     }
     public bool HasExtraBed { get; }
-    public override void DisplayRoomInfo()
+    public override string DisplayRoomInfo()
     {
-        //throw new NotImplementedException();
-        Console.WriteLine($"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has extra bed: {(HasExtraBed ? "Yes" : "No")}");
+        return $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has extra bed: {(HasExtraBed ? "Yes" : "No")}";
     }
 }

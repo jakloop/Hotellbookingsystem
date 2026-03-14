@@ -41,5 +41,5 @@ public abstract class Room
             protected set;
         
         }
-    public abstract void DisplayRoomInfo();
+    public abstract string DisplayRoomInfo();
 }

@@ -53,7 +53,7 @@ public class HotelClass
         foreach (var room in RoomRegister)
             if (room.IsAvailable)
             {
-                //Console.WriteLine($"{Room.DisplayRoomInfo()}");
+                Console.WriteLine($"{room.DisplayRoomInfo()}");
                 foundAvailableRoom = true;
             }
 

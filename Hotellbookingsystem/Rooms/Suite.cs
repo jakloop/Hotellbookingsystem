@@ -18,9 +18,9 @@ public class Suite : Room
     public bool HasJacuzzi { get; }
     public bool HasLounge { get; }
     
-    public override void DisplayRoomInfo()
+    public override string DisplayRoomInfo()
     {
-        Console.WriteLine(
-            $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasLounge ? "Yes" : "No")} Has desk: {{(HasJacuzzi ? \"Yes\" : \"No\")");
+        return
+            $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasLounge ? "Yes" : "No")} Has desk: {{(HasJacuzzi ? \"Yes\" : \"No\")";
     }
 }

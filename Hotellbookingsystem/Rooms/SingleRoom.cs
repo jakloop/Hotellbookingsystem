@@ -11,10 +11,9 @@ public class SingleRoom : Room
     }
     public bool HasDesk { get; }
 
-    public override void DisplayRoomInfo()
+    public override string DisplayRoomInfo()
     {
         //throw new NotImplementedException();
-        Console.WriteLine(
-            $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasDesk ? "Yes" : "No")}");
+        return $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasDesk ? "Yes" : "No")}";
     }
 }
