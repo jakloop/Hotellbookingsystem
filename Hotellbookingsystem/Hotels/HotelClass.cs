@@ -1,6 +1,5 @@
 //bruker linq her
 //TODO forklar linq her
-using System.Linq;
 using Hotellbookingsystem.Bookings;
 using Hotellbookingsystem.Guests;
 using Hotellbookingsystem.Payments;
@@ -29,33 +28,41 @@ public class HotelClass
         {
             throw new ArgumentException("Guest already registered");
         }
+
         GuestRegister.Add(guest);
     }
+
     public void RegisterRoom(Room room)
     {
         if (RoomRegister.Any(r => r.RoomNumber == room.RoomNumber))
         {
             throw new ArgumentException("Room already registered");
         }
+
         RoomRegister.Add(room);
     }
-    
+
     public void RegisterBooking(Booking booking)
     {
         BookingHistory.Add(booking);
     }
-    
+//TODO fix this issue
     public string ShowAvailableRooms()
     {
-        foreach(var room in RoomRegister)
+        bool foundAvailableRoom = false;
+        foreach (var room in RoomRegister)
             if (room.IsAvailable)
-                Console.WriteLine($"[ {room.RoomNumber} ] {room.RoomType}  -  {room.PricePerNight} kr/night - Max {room.MaxGuests} guests");
-            else
-                return "No available rooms";
-        return "Returning to menu...";
+            {
+                //Console.WriteLine($"{Room.DisplayRoomInfo()}");
+                foundAvailableRoom = true;
+            }
+
+        if (!foundAvailableRoom)
+            return "No available rooms";
+        return "That's all.";
     }
 
-    //TODO implement this?
+//TODO implement this?
     public bool IsGuestReal(string guestId)
     {
         Guest? guest = null;

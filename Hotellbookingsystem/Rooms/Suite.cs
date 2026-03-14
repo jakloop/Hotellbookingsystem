@@ -9,7 +9,7 @@ public class Suite : Room
     private decimal standardPricePerNight;
 
     public Suite(string roomType, decimal pricePerNight, bool isAvailable, bool hasJacuzzi, bool hasLounge):
-        base("Suite", 3500, isAvailable, 5)
+        base("Suite", 3500, isAvailable, 4)
     {
         HasJacuzzi = hasJacuzzi;
         HasLounge = hasLounge;
@@ -20,7 +20,6 @@ public class Suite : Room
     
     public override void DisplayRoomInfo()
     {
-        //throw new NotImplementedException();
         Console.WriteLine(
             $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasLounge ? "Yes" : "No")} Has desk: {{(HasJacuzzi ? \"Yes\" : \"No\")");
     }

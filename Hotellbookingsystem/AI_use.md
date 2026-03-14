@@ -59,3 +59,29 @@ string trimmedInput = input.Trim();
         return isFourDigits;
     }
 }
+
+
+- Helped with the available room check
+
+- Code before:
+
+
+- code after:
+  public string ShowAvailableRooms()
+  {
+  bool foundAvailableRoom = false;
+
+  foreach (var room in RoomRegister)
+  {
+  if (room.IsAvailable)
+  {
+  Console.WriteLine(room.DisplayRoomInfo());
+  foundAvailableRoom = true;
+  }
+  }
+
+  if (!foundAvailableRoom)
+  return "No available rooms";
+
+  return "Returning to menu...";
+  }

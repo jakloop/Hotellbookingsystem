@@ -4,8 +4,6 @@ namespace Hotellbookingsystem.Rooms;
 //</summary>
 public class SingleRoom : Room
 {
-
-
     public SingleRoom(string roomType, decimal pricePerNight, bool isAvailable, int maxGuests, bool hasDesk) :
         base("Single", 800, isAvailable, 1)
     {

@@ -16,10 +16,12 @@ class Program
         HotelClass hotel = new HotelClass();
         
         // Adding a couple of rooms
-        Room room1 = new SingleRoom("Single", 800, true, 1);
-        Room room2 = new DoubleRoom("Double", 1200, true, 2);
+        Room room1 = new SingleRoom("Single", 800, true, 1, true);
+        Room room3 = new Suite("Suite", 3500, true, true, true);
+        Room room2 = new DoubleRoom("Double", 1200, true, 2, true);
         hotel.RegisterRoom(room1);
         hotel.RegisterRoom(room2);
+        hotel.RegisterRoom(room3);
         
         // Adding a couple of guest
         Guest guest1 = new RegularGuest("John", "john@johnny.com");
