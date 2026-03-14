@@ -6,7 +6,7 @@ public class RoomIdGenerator
 {
     private static int roomCounter = 0;
 
-    private static string RoomNumberGenerator()
+    public static string GenerateRoomNumber()
     {
         roomCounter++;
         return $"{roomCounter:D3}";

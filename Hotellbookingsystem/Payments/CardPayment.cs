@@ -32,7 +32,6 @@ public class CardPayment : IPayable
     
     // method to verify if the input is exactly 4 digits
     // Accessed from google AI
-
     public static bool IsExactlyFourDigitsInput(string input)
     {
         // Trim whitespace first to handle inputs like " 1234 "

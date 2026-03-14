@@ -1,9 +1,9 @@
 
 # AI use
 
-When I start projects like this i always try do reduce the use of AI to the minimum. 
-This is because i believe that there is much valuable learning in solving problems through 'doing it yourself'.
-In spite of this, i also see the value of AI in some situations. Especially when I want to discuss different solutions
+When I start projects like this I always try to limit the use of AI to the minimum. 
+This is because I believe that there is much valuable learning in solving problems through 'doing it yourself'.
+In spite of this, I also see the value of AI in some situations. Especially when I want to discuss different solutions
 to a problem, or when I don't grasp the problem completely.
 
 This project is similar to a previous project, where I built a library system. In that project I used AI

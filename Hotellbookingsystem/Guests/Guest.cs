@@ -19,17 +19,18 @@ public abstract class Guest
         Email = email;
         ActiveBookings = new List<Booking>();
     }
-    
-    public string Name 
-    { 
+
+    public string Name
+    {
         get => name;
         set
         {
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("Name cannot be empty");
-            name = value; 
+            name = value;
         }
     }
+
     public string Email
     {
         get => email;
@@ -40,9 +41,10 @@ public abstract class Guest
             email = value;
         }
     }
+
     public string GuestId => guestId;
 
-    public List<Booking> ActiveBookings1 => ActiveBookings;
+    // public List<Booking> ActiveBookings1 => ActiveBookings;
 
     public abstract decimal GetDiscount(decimal bacePrice);
 }

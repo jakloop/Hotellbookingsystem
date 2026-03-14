@@ -6,7 +6,7 @@ Date: 6th of March 2026 -- 20th of March 2026
 Student: Jakloop
 
 # Overview:
-This a assignment for the subject 2 of the year one course Online.
+This an assignment for subject 2 of the year one course Online.
 The assignment is to create a hotel booking system.
 The console application is written in C#.
 The system simulates a hotel booking system with
@@ -20,9 +20,10 @@ The system simulates a hotel booking system with
 # Self assessment:
 
 
+
 # Sources (not cited, but used as a learning resource)
 - https://www.w3schools.com/cs/cs_interface.php
-- 
+- https://www.youtube.com/watch?v=6XrL5jXmTwM
 
 
 

@@ -11,18 +11,18 @@ namespace Hotellbookingsystem.Bookings;
 public class Booking
 {
     private string BookingId;
-    private Room room;
+    private Room room { get; set; }
     private Guest Guest { get; }
     private DateTime CheckInDate;
     private DateTime CheckOutDate;
-    private IPayable PaymentMethod;
+    private IPayable paymentMethod;
     //TODO check that this isn't able to change outside the booking system
     private bool IsPaid { get; set;}
     public Booking(Guest guest, Room room, IPayable paymentMethod, DateTime checkInDate, DateTime checkOutDate)
     {
         this.Guest = guest;
         this.room = room;
-        this.PaymentMethod = paymentMethod;
+        this.paymentMethod = paymentMethod;
         this.CheckInDate = checkInDate;
         this.CheckOutDate = checkOutDate;
         IsPaid = false;

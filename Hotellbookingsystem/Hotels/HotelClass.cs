@@ -49,11 +49,38 @@ public class HotelClass
     {
         foreach(var room in RoomRegister)
             if (room.IsAvailable)
-                Console.WriteLine($" Available: {room.RoomNumber}, {room.RoomType}, {room.PricePerNight}");
+                Console.WriteLine($"[ {room.RoomNumber} ] {room.RoomType}  -  {room.PricePerNight} kr/night - Max {room.MaxGuests} guests");
             else
                 return "No available rooms";
         return "Returning to menu...";
     }
+
+    //TODO implement this?
+    public bool IsGuestReal(string guestId)
+    {
+        Guest? guest = null;
+        // Finds userid in the user register
+        
+        foreach (var g in GuestRegister)
+            if (g.GuestId == guestId)
+            {
+                return true;
+            }
+        return false;
+    }
+
+    public bool IsRoomReal(string roomNumber)
+    {
+        Room? room = null;
+        // Finds userid in the user register
+        foreach (var r in RoomRegister)
+            if (r.RoomNumber == roomNumber)
+            {
+                return true;
+            }
+        return false;
+    }
+    
     
     public void CreateBooking(string guestId, string roomNumber, DateTime checkInDate, DateTime checkOutDate, IPayable iPayable)
     {
@@ -61,29 +88,36 @@ public class HotelClass
         Room? room = null;
         
         // Finds userid in the user register
-        
-        foreach (var g in GuestRegister)
-            if (g.GuestId == guestId)
-            {
-                guest = g;
-                break;
-            }
-        
-        // if there is no match
-        
-        if (guest == null)
+        if (!IsGuestReal(guestId))
             throw new ArgumentException("Guest not found");
         
         // Finds roomid in the room register
-        foreach (var r in RoomRegister)
-            if (r.RoomNumber == roomNumber)
-            {
-                room = r;
-                break;
-            }
-
-        if (room == null)
+        if (!IsRoomReal(roomNumber))
             throw new ArgumentException("Room not found");
+        
+        //foreach (var g in GuestRegister)
+        //    if (g.GuestId == guestId)
+        //   {
+        //        guest = g;
+        //        break;
+        //    }
+        
+        
+        // if there is no match
+        
+        // if (guest == null)
+        //    throw new ArgumentException("Guest not found");
+        
+        // Finds roomid in the room register
+        // foreach (var r in RoomRegister)
+        //    if (r.RoomNumber == roomNumber)
+        //    {
+        //        room = r;
+        //        break;
+        //    }
+
+        //if (room == null)
+        //    throw new ArgumentException("Room not found");
         
         // Checks if it is available
         if (!room.IsAvailable)
@@ -92,9 +126,10 @@ public class HotelClass
         // Update room availability
         room.IsAvailable = false;
         
+        //TODO Impleament this
         // Create booking
-        Booking booking = new Booking(guest, room, checkInDate, checkOutDate, );
-        RegisterBooking(booking);
+        //Booking booking = new Booking(guest, room, checkInDate, checkOutDate,p );
+        //RegisterBooking(booking);
         
         
     }
