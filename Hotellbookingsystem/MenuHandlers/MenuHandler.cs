@@ -1,5 +1,4 @@
 using Hotellbookingsystem.Hotels;
-using System;
 using Hotellbookingsystem.Bookings;
 using Hotellbookingsystem.Guests;
 using Hotellbookingsystem.Rooms;
@@ -93,25 +92,36 @@ public class MenuHandler
 
                                 Console.WriteLine("Enter CardType");
                                 string? cardType = Console.ReadLine();
+                                _hotelClass.CreateBooking(userId, roomId, checkInDate, checkOutDate, new CardPayment(cardNumber, cardType));
                                 break;
+                            case "2":
+                                Console.WriteLine("Vipps payment chosen");
+                                Console.WriteLine("Enter Vipps number: ");
+                                string? vippsNumber = Console.ReadLine();
+                                _hotelClass.CreateBooking(userId, roomId, checkInDate, checkOutDate, new VippsPayment(vippsNumber));
+                                break;
+                            
                         }
-
                         break;
-                    //TODO implement this
-                    //_hotelClass.CreateBooking(userId, roomId, checkInDate, checkOutDate, iPayable: new CardPayment(cardNumberInted) ? new VippsPayment());
-                    //break;
                     case "3":
                         Console.WriteLine("Check in");
                         Console.WriteLine("Enter booking Id:");
+                        string bookingId2 = Console.ReadLine();
                         //TODO implement check in through hotel.class
-                        // hotelclass.CheckIn(bookingId);
+                        _hotelClass.CheckIn(bookingId2);
                         break;
+                   
+                    // IDE AI HELP HERE, brain stopped functioning and Í tried
+                    // to call Checkin through booking.
+                    // IDE suggested the function in "hotel.class"
                     case "4":
                         Console.WriteLine("Check out");
                         Console.WriteLine("Enter booking Id");
+                        string bookingId3 = Console.ReadLine();
                         //TODO implement check out through hotel.class
-                        //hotelclass.CheckOut(bookingId);
+                        _hotelClass.CheckOut(bookingId3);
                         break;
+                    
                     case "5":
                         Console.WriteLine("Show my bookings");
                         Console.WriteLine("Enter user Id");

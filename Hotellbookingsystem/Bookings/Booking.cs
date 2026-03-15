@@ -63,7 +63,7 @@ public class Booking
         return paid;
     }
     
-    new void CheckIn()
+    public void CheckIn()
     {
         if (!isPaid)
         {
@@ -72,7 +72,7 @@ public class Booking
         room.IsAvailable = false;
     }
 
-    new void CheckOut()
+    public void CheckOut()
     {
         room.IsAvailable = true;
     }

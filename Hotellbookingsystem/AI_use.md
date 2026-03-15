@@ -187,3 +187,23 @@ Console.WriteLine($"=== Available rooms ({checkIn:dd.MM.yyyy} - {checkOut:dd.MM.
             }
         }
     }
+
+
+-Transforming for loop into LINQ query:
+AI input:
+I want to transform the following for loop into a LINQ query:
+help me make this function into lambda in c# 
+public bool IsGuestReal(string guestId) 
+{ Guest? guest = null;
+// Finds userid in the user register 
+foreach (var g in GuestRegister) 
+if (g.GuestId == guestId) { return true; } 
+return false;
+
+
+1. The clean LINQ + lambda version (recommended)
+   Use .Any() with a lambda:
+   public bool IsGuestReal(string guestId)
+   {
+   return GuestRegister.Any(g => g.GuestId == guestId);
+   }

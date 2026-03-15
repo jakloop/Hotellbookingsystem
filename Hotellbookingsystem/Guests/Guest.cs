@@ -43,8 +43,5 @@ public abstract class Guest
     }
 
     public string GuestId => guestId;
-
-    // public List<Booking> ActiveBookings1 => ActiveBookings;
-
     public abstract decimal GetDiscount(decimal bacePrice);
 }

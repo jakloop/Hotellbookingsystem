@@ -21,6 +21,9 @@ public class HotelClass
         BookingHistory = new List<Booking>();
     }
 
+    //<summary>
+    // Register guest
+    //</summary>
     public void RegisterGuest(Guest guest)
     {
         if (GuestRegister.Any(g => g.Email == guest.Email))
@@ -31,6 +34,9 @@ public class HotelClass
         GuestRegister.Add(guest);
     }
 
+    //<summary>
+    // Register room
+    //</summary>
     public void RegisterRoom(Room room)
     {
         if (RoomRegister.Any(r => r.RoomNumber == room.RoomNumber))
@@ -41,6 +47,9 @@ public class HotelClass
         RoomRegister.Add(room);
     }
 
+    //<summary>
+    // Register booking
+    //</summary>
     public void RegisterBooking(Booking booking)
     {
         BookingHistory.Add(booking);
@@ -62,37 +71,29 @@ public class HotelClass
             }
         }
     }
-
-//TODO implement this?
+    
+    // AI HELP with Linq method - transformed for loop to linq method.
+    //<summary>
+    // Check if Guest is registered
+    //</summary>
     public bool IsGuestReal(string guestId)
     {
-        Guest? guest = null;
-        // Finds userid in the user register
-        
-        foreach (var g in GuestRegister)
-            if (g.GuestId == guestId)
-            {
-                return true;
-            }
-        return false;
+        return GuestRegister.Any(g => g.GuestId == guestId);
     }
 
+    //<summary>
+    // Check if Room is registered
+    //</summary>
     public bool IsRoomReal(string roomNumber)
     {
-        Room? room = null;
-        // Finds userid in the user register
-        foreach (var r in RoomRegister)
-            if (r.RoomNumber == roomNumber)
-            {
-                return true;
-            }
-        return false;
+        return RoomRegister.Any(r => r.RoomNumber == roomNumber);
+
     }
-
-
+    // <summary>
+    // Create booking
+    // </summary>
     public void CreateBooking(string guestId, string roomNumber, DateTime checkInDate, DateTime checkOutDate,
         IPayable paymentMethod)
-    //NEEDS TO BE IMPLENTED ASAP, 
     {
         // Finds userid in the user register
         if (!IsGuestReal(guestId))
@@ -106,29 +107,67 @@ public class HotelClass
         if (checkInDate > checkOutDate)
             throw new ArgumentException("Check-in date must be before check-out date");
         
-        // verify if room is available
-        Room? room = RoomRegister.FirstOrDefault(r => r.RoomNumber == roomNumber);
+        var guest = GuestRegister.FirstOrDefault(g => g.GuestId == guestId);
+        var room = RoomRegister.FirstOrDefault(r => r.RoomNumber == roomNumber);
         
         // Check max bookings
+        int isGuestBookingsMaxed = guest.ActiveBookings.Count;
+        if (guest is RegularGuest && isGuestBookingsMaxed >= 3)
+            throw new ArgumentException("Guest has reached maximum number of bookings");
+        if (guest is VipGuest && isGuestBookingsMaxed >= 10)
+            throw new ArgumentException("Vip guest has reached maximum number of bookings");
         
-        
-        // Create booking
-        
+        // All is good
+        // Create booking object
+        var booking = new Booking(guest, room, paymentMethod, checkInDate, checkOutDate);
         // process payment
-        
+        if (!booking.ProcessPayment())
+            throw new ArgumentException("Payment failed");
+        // Create booking
+        guest.ActiveBookings.Add(booking);
         // add booking to history
+        RegisterBooking(booking);
         
-        // ad loyalty points for VIPS
-        
+        // add loyalty points for VIP's
+        if (guest is VipGuest vipGuest)
+        {
+            vipGuest.AddLoyaltyPointsBooking();
+        }
+
         // add messages for output
+        //TODO FIX THIS SO THAT IT ACTUALLY WORKS
+        Console.WriteLine($"Booking {booking.BookingId} created for {guest.Name} ({guest.GuestId})");
+        Console.WriteLine($"{room.RoomType} ({room.RoomNumber} -- {checkInDate:dd.MM.yyyy}, {checkOutDate : dd.MM.yyyy}");
+        Console.WriteLine($"Total Price: {booking.CalculateTotalPrice()} kr");
+        Console.WriteLine($"Payment approved with: {paymentMethod.GetType().Name}");
     }
     
-        
         //TODO Implement Get GUEST BOOKINGS for menu handler
         
         //TODO IMPLEMENT void CHECKIN for menu handler
+        // AI HELP HERE, IDE
+        public void CheckIn(string bookingId)
+        {
+            var booking = BookingHistory.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking == null)
+                throw new ArgumentException("Booking not found");
+
+            booking.CheckIn();
+            Console.WriteLine($"{booking.Guest.Name} checked in for {booking.Room.RoomNumber}");
+        }
         
         //TODO IMPLEMENT void CHECKOUT for menu handler
+        
+        // AI HELP HERE, IDE
+        public void CheckOut(string bookingId)
+        {
+            var booking = BookingHistory.FirstOrDefault(b => b.BookingId == bookingId);
+            if (booking == null)
+                throw new ArgumentException("Booking not found");
+
+            booking.CheckOut();
+            Console.WriteLine($"{booking.Guest.Name} checked out from {booking.Room.RoomNumber}");
+        }
         
         
     }

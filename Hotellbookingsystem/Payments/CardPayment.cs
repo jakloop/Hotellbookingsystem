@@ -5,7 +5,7 @@ public class CardPayment : IPayable
     private readonly string cardNumber;
     private readonly string cardType;
 
-    //<summary
+    //<summary>
     // Cardpayment constructor
     //</summary>
     public CardPayment(string CardNumber, string CardType)
@@ -18,8 +18,9 @@ public class CardPayment : IPayable
         this.cardType = CardType;
         
     }
-    
-    
+    //<summary>
+    // Process payment
+    //</summary>
     public bool ProcessPayment(decimal amount)
     {
         return true;
@@ -31,7 +32,7 @@ public class CardPayment : IPayable
     }
     
     // method to verify if the input is exactly 4 digits
-    // Accessed from google AI
+    // Accessed from Google AI
     public static bool IsExactlyFourDigitsInput(string input)
     {
         // Check if it's all digits and exactly 4 characters long
