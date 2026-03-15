@@ -45,7 +45,16 @@ public class MenuHandler
                 switch (choice)
                 {
                     case "1":
-                        _hotelClass.ShowAvailableRooms();
+                        Console.WriteLine("Show available rooms");
+                        Console.WriteLine("Enter check in date (dd.mm.yyyy):");
+                        DateTime checkIn = DateTime.TryParse(Console.ReadLine(), out DateTime date1)
+                            ? date1
+                            : DateTime.Now;
+                        Console.WriteLine("Enter check out date (dd.mm.yyyy):");
+                        DateTime checkOut= DateTime.TryParse(Console.ReadLine(), out DateTime date2)
+                            ? date2
+                            : DateTime.Now.AddDays(1);
+                        _hotelClass.ShowAvailableRooms(checkIn, checkOut);
                         break;
 
                     case "2":
@@ -55,14 +64,14 @@ public class MenuHandler
                         Console.WriteLine("Enter RoomID");
                         string? roomId = Console.ReadLine();
                         Console.WriteLine("Enter CheckInDate");
-                        DateTime checkInDate = DateTime.TryParse(Console.ReadLine(), out DateTime date)
-                            ? date
+                        DateTime checkInDate = DateTime.TryParse(Console.ReadLine(), out DateTime date3)
+                            ? date3
                             : DateTime.Now;
 
                         //TODO double check that this works v
                         Console.WriteLine("Enter CheckOutDate (dd.mm.yyyy):");
-                        DateTime checkOutDate = DateTime.TryParse(Console.ReadLine(), out date)
-                            ? date
+                        DateTime checkOutDate = DateTime.TryParse(Console.ReadLine(), out DateTime date4)
+                            ? date4
                             : DateTime.Now.AddDays(1);
 
                         Console.WriteLine("Enter PaymentMethod");

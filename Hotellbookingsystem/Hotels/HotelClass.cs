@@ -46,19 +46,21 @@ public class HotelClass
         BookingHistory.Add(booking);
     }
 //TODO fix this issue
-    public string ShowAvailableRooms()
+// MAJOR AI HELP ON THIS Method CODE.
+    public void ShowAvailableRooms(DateTime checkIn, DateTime checkOut)
     {
-        bool foundAvailableRoom = false;
+        Console.WriteLine($"Available rooms ({checkIn:dd.MM.yyyy} - {checkOut:dd.MM.yyyy}");
         foreach (var room in RoomRegister)
-            if (room.IsAvailable)
+        {
+            bool hasOverlappingBooking = BookingHistory.Any(b =>
+                b.Room.RoomNumber == room.RoomNumber &&
+                b.CheckOutDate > checkIn &&
+                b.CheckInDate < checkOut);
+            if (room.IsAvailable && !hasOverlappingBooking)
             {
-                Console.WriteLine($"{room.DisplayRoomInfo()}");
-                foundAvailableRoom = true;
+                room.DisplayRoomInfo();
             }
-
-        if (!foundAvailableRoom)
-            return "No available rooms";
-        return "That's all.";
+        }
     }
 
 //TODO implement this?

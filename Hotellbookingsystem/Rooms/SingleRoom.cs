@@ -13,7 +13,6 @@ public class SingleRoom : Room
 
     public override string DisplayRoomInfo()
     {
-        //throw new NotImplementedException();
         return $"[ {RoomNumber} ] {RoomType}  -  {PricePerNight} kr/night - Max {MaxGuests} guests  - Has desk: {(HasDesk ? "Yes" : "No")}";
     }
 }

@@ -30,10 +30,10 @@ class Program
         hotel.RegisterGuest(guest1);
         
         // Adding a couple of bookings
-        // Booking booking1 = new Booking(guest1, room1, DateTime.Now, DateTime.Now.AddDays(1));
-        // Booking booking2 = new Booking(guest2, room2, DateTime.Now, DateTime.Now.AddDays(2));
-        // hotel.RegisterBooking(booking1);
-        // hotel.RegisterBooking(booking2);
+        Booking booking1 = new Booking(guest1, room1, new CardPayment("1234", "Visa"),DateTime.Now, DateTime.Now.AddDays(1));
+        Booking booking2 = new Booking(guest2, room2, new VippsPayment("90807060"), DateTime.Now, DateTime.Now.AddDays(2));
+        hotel.RegisterBooking(booking1);
+        hotel.RegisterBooking(booking2);
         
         Console.WriteLine(guest1.Name + " " + guest1.GuestId);
         Console.WriteLine(guest2.Name + " " + guest2.GuestId);

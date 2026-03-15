@@ -148,3 +148,42 @@ private readonly IPayable paymentMethod;
     public bool IsPaid => isPaid;
 
 
+
+HELP FROM RIDER AI:
+Input- help me implement the code on ShowavailableRooms() so that it uses
+datetime checkin and chechout to find available rooms in a certain timeframe.
+Use bookingHistory to check if a room is already booked in the time frame.
+
+Code before RIDER AI:
+    public void ShowAvailableRooms(DateTime checkIn, DateTime checkOut)
+    {
+         bool foundAvailableRoom = false;
+         foreach (var room in RoomRegister)
+            if (room.IsAvailable)
+            {
+                Console.WriteLine($"{room.DisplayRoomInfo()}");
+                foundAvailableRoom = true;
+            }
+
+        if (!foundAvailableRoom)
+            return "No available rooms";
+        return "That's all.";
+
+Code after RIDER AI:
+public void GetAvailableRooms(DateTime checkIn, DateTime checkOut)
+{
+Console.WriteLine($"=== Available rooms ({checkIn:dd.MM.yyyy} - {checkOut:dd.MM.yyyy}) ===");
+
+        foreach (var room in RoomRegister)
+        {
+            bool hasOverlappingBooking = BookingHistory.Any(b =>
+                b.Room.RoomNumber == room.RoomNumber &&
+                b.CheckOutDate > checkIn &&
+                b.CheckInDate < checkOut);
+
+            if (room.IsAvailable && !hasOverlappingBooking)
+            {
+                room.DisplayRoomInfo();
+            }
+        }
+    }

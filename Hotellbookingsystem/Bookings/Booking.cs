@@ -36,7 +36,7 @@ public class Booking
     public DateTime CheckInDate => checkInDate;
     public DateTime CheckOutDate => checkOutDate;
 
-    public bool IsPaid => IsPaid;
+    public bool IsPaid => isPaid;
     public IPayable PaymentMethod => paymentMethod;
     //<summary
     // calculates total price of the booking after discount
