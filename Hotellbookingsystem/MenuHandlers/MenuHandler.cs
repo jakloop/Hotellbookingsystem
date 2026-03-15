@@ -93,18 +93,24 @@ public class MenuHandler
                     //break;
                     case "3":
                         Console.WriteLine("Check in");
-                        Console.WriteLine("Enter user Id");
-
+                        Console.WriteLine("Enter booking Id:");
+                        //TODO implement check in through hotel.class
+                        // hotelclass.CheckIn(bookingId);
                         break;
                     case "4":
                         Console.WriteLine("Check out");
-                        Console.WriteLine("Enter user Id");
+                        Console.WriteLine("Enter booking Id");
+                        //TODO implement check out through hotel.class
+                        //hotelclass.CheckOut(bookingId);
                         break;
                     case "5":
                         Console.WriteLine("Show my bookings");
                         Console.WriteLine("Enter user Id");
+                        //TODO implement showmybookings through hotel.class
+                        
                         break;
                     case "6":
+                        //TODO Implement register guest
                         Console.WriteLine("Register new guest");
                         Console.WriteLine("Enter guest name");
                         string? guestName = Console.ReadLine();
@@ -118,10 +124,11 @@ public class MenuHandler
                     case "7. Cancel booking":
                         Console.WriteLine("Enter booking Id");
                         string? bookingId = Console.ReadLine();
+                        // implement cancel booking through hotel.class
                         break;
                 }
             
-}
+            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");

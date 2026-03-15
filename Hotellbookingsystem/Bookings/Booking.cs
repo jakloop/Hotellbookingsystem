@@ -11,16 +11,16 @@ namespace Hotellbookingsystem.Bookings;
 public class Booking
 {
     // AI-help on these fields.
-    private readonly string BookingId;
+    private readonly string bookingId;
     private readonly Room room;
     private readonly Guest guest;
-    private readonly DateTime CheckInDate;
-    private readonly DateTime CheckOutDate;
+    private readonly DateTime checkInDate;
+    private readonly DateTime checkOutDate;
     private readonly IPayable paymentMethod;
-    //TODO check that this isn't able to change outside the booking system
-    private bool IsPaid { get; set;}
+    private bool isPaid;
     public Booking(Guest guest, Room room, IPayable paymentMethod, DateTime checkInDate, DateTime checkOutDate)
     {
+        this.guest = guest;
         this.room = room;
         this.paymentMethod = paymentMethod;
         this.checkInDate = checkInDate;
@@ -29,27 +29,51 @@ public class Booking
         bookingId = BookingIdGenerator.GenerateBookingId();
     }
 
+    // AI-help here as well
     public string BookingId => BookingId;
     public Room Room => room;
     public Guest Guest => guest;
     public DateTime CheckInDate => checkInDate;
     public DateTime CheckOutDate => checkOutDate;
-    new decimal CalculateTotalPrice()
+
+    public bool IsPaid => IsPaid;
+    public IPayable PaymentMethod => paymentMethod;
+    //<summary
+    // calculates total price of the booking after discount
+    //</summary>
+    public decimal CalculateTotalPrice()
     {
-        decimal totalprice = room.PricePerNight * (CheckOutDate - CheckInDate).Days;
-        decimal discount = Guest.GetDiscount(totalprice);
-        return totalprice - discount;
-        
+        var nights = (checkOutDate - checkInDate).Days;
+        if (nights <= 0)
+        {
+            throw new AbandonedMutexException("Check out date must be before Check-in date.");
+        }
+        decimal basePrice = room.PricePerNight * nights;
+        return guest.GetDiscount(basePrice);
+    }
+
+    public bool ProcessPayment()
+    {
+        decimal totalPrice = CalculateTotalPrice();
+        var paid=  paymentMethod.ProcessPayment(totalPrice);
+        if (paid)
+        {
+            isPaid = true;
+        }
+        return paid;
     }
     
     new void CheckIn()
     {
+        if (!isPaid)
+        {
+            throw new InvalidOperationException("Booking must be paid before check-in.");
+        }
+        room.IsAvailable = false;
     }
 
     new void CheckOut()
     {
+        room.IsAvailable = true;
     }
-
-
-
 }
