@@ -88,57 +88,47 @@ public class HotelClass
             }
         return false;
     }
-    
-    
-    public void CreateBooking(string guestId, string roomNumber, DateTime checkInDate, DateTime checkOutDate, IPayable iPayable)
+
+
+    public void CreateBooking(string guestId, string roomNumber, DateTime checkInDate, DateTime checkOutDate,
+        IPayable paymentMethod)
+    //NEEDS TO BE IMPLENTED ASAP, 
     {
-        Guest? guest = null;
-        Room? room = null;
-        
         // Finds userid in the user register
         if (!IsGuestReal(guestId))
             throw new ArgumentException("Guest not found");
-        
+
         // Finds roomid in the room register
         if (!IsRoomReal(roomNumber))
             throw new ArgumentException("Room not found");
         
-        //foreach (var g in GuestRegister)
-        //    if (g.GuestId == guestId)
-        //   {
-        //        guest = g;
-        //        break;
-        //    }
+        // verify checkin and checkout dates
+        if (checkInDate > checkOutDate)
+            throw new ArgumentException("Check-in date must be before check-out date");
+        
+        // verify if room is available
+        Room? room = RoomRegister.FirstOrDefault(r => r.RoomNumber == roomNumber);
+        
+        // Check max bookings
         
         
-        // if there is no match
-        
-        // if (guest == null)
-        //    throw new ArgumentException("Guest not found");
-        
-        // Finds roomid in the room register
-        // foreach (var r in RoomRegister)
-        //    if (r.RoomNumber == roomNumber)
-        //    {
-        //        room = r;
-        //        break;
-        //    }
-
-        //if (room == null)
-        //    throw new ArgumentException("Room not found");
-        
-        // Checks if it is available
-        if (!room.IsAvailable)
-            throw new ArgumentException("Room is not available");
-        
-        // Update room availability
-        room.IsAvailable = false;
-        
-        //TODO Impleament this
         // Create booking
-        //Booking booking = new Booking(guest, room, checkInDate, checkOutDate,p );
-        //RegisterBooking(booking);
+        
+        // process payment
+        
+        // add booking to history
+        
+        // ad loyalty points for VIPS
+        
+        // add messages for output
+    }
+    
+        
+        //TODO Implement Get GUEST BOOKINGS for menu handler
+        
+        //TODO IMPLEMENT void CHECKIN for menu handler
+        
+        //TODO IMPLEMENT void CHECKOUT for menu handler
         
         
     }
-}
