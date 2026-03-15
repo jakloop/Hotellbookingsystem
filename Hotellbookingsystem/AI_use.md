@@ -62,9 +62,7 @@ string trimmedInput = input.Trim();
 
 
 - Helped with the available room check
-
-- Code before:
-
+//TODO implement this after you have checked the cange in comit.
 
 - code after:
   public string ShowAvailableRooms()
@@ -85,3 +83,68 @@ string trimmedInput = input.Trim();
 
   return "Returning to menu...";
   }
+
+
+#2Help on readonly fields on booking class - also discussion.
+
+Prompts:
+Inserted the code i had on booking class ( a lot of improvements were neccessary), and asked for help on the
+fields, and properties.
+
+public class Booking
+{
+private string BookingId;
+private  Room room;
+private  Guest { get; }
+private  DateTime CheckInDate;
+private reaDateTime CheckOutDate;
+private IPayable paymentMethod;
+//TODO check that this isn't able to change outside the booking system
+private bool IsPaid { get; set;}
+public Booking(Guest guest, Room room, IPayable paymentMethod, DateTime checkInDate, DateTime checkOutDate)
+{
+this.Guest = guest;
+this.room = room;
+this.paymentMethod = paymentMethod;
+this.CheckInDate = checkInDate;
+this.CheckOutDate = checkOutDate;
+IsPaid = false;
+BookingId = BookingIdGenerator.GenerateBookingId();
+}
+
+Code after AI help:
+Improved version of the class
+   Example refactored version:
+
+public class Booking
+{
+private readonly string bookingId;
+private readonly Room room;
+private readonly Guest guest;
+private readonly DateTime checkInDate;
+private readonly DateTime checkOutDate;
+private readonly IPayable paymentMethod;
+
+    private bool isPaid;
+
+    public Booking(Guest guest, Room room, IPayable paymentMethod,
+                   DateTime checkInDate, DateTime checkOutDate)
+    {
+        this.guest = guest;
+        this.room = room;
+        this.paymentMethod = paymentMethod;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+
+        bookingId = BookingIdGenerator.GenerateBookingId();
+        isPaid = false;
+    }
+
+    public string BookingId => bookingId;
+    public Room Room => room;
+    public Guest Guest => guest;
+    public DateTime CheckInDate => checkInDate;
+    public DateTime CheckOutDate => checkOutDate;
+    public bool IsPaid => isPaid;
+
+

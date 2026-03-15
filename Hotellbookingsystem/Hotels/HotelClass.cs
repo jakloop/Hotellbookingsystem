@@ -1,5 +1,4 @@
-//bruker linq her
-//TODO forklar linq her
+
 using Hotellbookingsystem.Bookings;
 using Hotellbookingsystem.Guests;
 using Hotellbookingsystem.Payments;
